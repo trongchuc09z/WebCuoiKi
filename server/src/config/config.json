@@ -1,0 +1,11 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "phongtrodb",
+        "host": "localhost",
+        "port": 3307,
+        "dialect": "mysql",
+        "logging": false
+    }
+}
