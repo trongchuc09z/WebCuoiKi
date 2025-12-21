@@ -7,49 +7,49 @@ import bcrypt from 'bcryptjs'
 require('dotenv').config()
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
-// export const register = async (req, res) => {
-//     const { name, phone, password, email } = req.body
-//     try {
-//         if (!name || !phone || !password || !email) return res.status(400).json({
-//             err: 1,
-//             msg: 'Missing inputs !'
-//         })
-//         const response = await authService.registerService(req.body)
-//         return res.status(200).json(response)
+export const register = async (req, res) => {
+    const { name, phone, password, email } = req.body
+    try {
+        if (!name || !phone || !password || !email) return res.status(400).json({
+            err: 1,
+            msg: 'Missing inputs !'
+        })
+        const response = await authService.registerService(req.body)
+        return res.status(200).json(response)
 
-//     } catch (error) {
-//         return res.status(500).json({
-//             err: -1,
-//             msg: 'Fail at auth controller: ' + error
-//         })
-//     }
-// }
-export const register = asyncHandler(async (req, res) => {
-    const user = await db.User.findOne({ where: { email: req.body.email } })
-    const token = makeId()
-    if (!user) {
-        await db.User.create({
-            email: 'notactived',
-            password: hashPassword(req.body.password),
-            name: req.body.name,
-            phone: req.body.phone,
-            zalo: req.body.phone,
-            id: token
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Fail at auth controller: ' + error
         })
     }
-    if (!user) {
-        const subject = 'Xác minh email đăng ký'
-        const html = `Xin vui lòng click vào link dưới đây để hoàn tất đăng ký tài khoản của bạn.Link này sẽ hết hạn sau 5 phút kể từ bây giờ. <a href=${process.env.SERVER_URL}/api/v1/auth/finalregister/${req.body.email}/${token}>Click here</a>`
-        await sendMail({ email: req.body.email, html, subject })
-        setTimeout(async () => {
-            await db.User.destroy({ where: { id: token } })
-        }, [30000])
-    }
-    return res.json({
-        err: !user ? 0 : 1,
-        msg: user ? 'Email đã được đăng ký' : 'Hãy check mail để kích hoạt tài khoản',
-    })
-})
+}
+// export const register = asyncHandler(async (req, res) => {
+//     const user = await db.User.findOne({ where: { email: req.body.email } })
+//     const token = makeId()
+//     if (!user) {
+//         await db.User.create({
+//             email: 'notactived',
+//             password: hashPassword(req.body.password),
+//             name: req.body.name,
+//             phone: req.body.phone,
+//             zalo: req.body.phone,
+//             id: token
+//         })
+//     }
+//     if (!user) {
+//         const subject = 'Xác minh email đăng ký'
+//         const html = `Xin vui lòng click vào link dưới đây để hoàn tất đăng ký tài khoản của bạn.Link này sẽ hết hạn sau 5 phút kể từ bây giờ. <a href=${process.env.SERVER_URL}/api/v1/auth/finalregister/${req.body.email}/${token}>Click here</a>`
+//         // await sendMail({ email: req.body.email, html, subject })
+//         setTimeout(async () => {
+//             await db.User.destroy({ where: { id: token } })
+//         }, [30000])
+//     }
+//     return res.json({
+//         err: !user ? 0 : 1,
+//         msg: user ? 'Email đã được đăng ký' : 'Hãy check mail để kích hoạt tài khoản',
+//     })
+// })
 export const finalRegister = asyncHandler(async (req, res) => {
     const { token, email } = req.params
     const response = await db.User.findOne({ where: { id: token }, raw: true })
