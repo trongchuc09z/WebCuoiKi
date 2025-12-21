@@ -70,7 +70,15 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
                 </p> */}
                 <div className='flex items-center my-5 justify-between'>
                     <div className=' flex items-center'>
-                        <img src="https://lnsel.com/wp-content/uploads/2018/12/anon-avatar-300x300.png" alt="avatar" className='w-[30px] h-[30px] object-cover rounded-full' />
+                        <img 
+                            src={user?.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=random&color=fff&size=128`} 
+                            alt="avatar" 
+                            className='w-[25px] h-[25px] object-cover rounded-full mr-2' 
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+                            }}
+                        />
                         <p>{user?.name}</p>
                     </div>
                     <div className='flex items-center gap-1'>

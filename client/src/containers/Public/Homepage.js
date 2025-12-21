@@ -1,6 +1,6 @@
 import React from 'react'
 import { text } from '../../ultils/constant'
-import { Province, ItemSidebar, RelatedPost } from '../../components'
+import { Province, ItemSidebar, RelatedPost, BannerSlider } from '../../components'
 import { List, Pagination } from './index'
 import { useSelector } from 'react-redux'
 
@@ -11,6 +11,7 @@ const Homepage = () => {
 
     return (
         <div className='w-full flex flex-col gap-3' >
+            <BannerSlider />
             <div>
                 <h1 className='text-[28px] font-bold' >{text.HOME_TITLE}</h1>
                 <p className='text-base text-gray-700'>{text.HOME_DESCRIPTION}</p>
