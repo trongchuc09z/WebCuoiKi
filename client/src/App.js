@@ -4,6 +4,7 @@ import { Home, Login, Rental, Homepage, DetailPost, SearchDetail, Contact, Reset
 import { path } from './ultils/constant' // File chứa các đường dẫn URL constants
 import { System, CreatePost, ManagePost, EditAccount, Wishlist } from './containers/System'
 import { Admin, ManageExpired, ManageReport, ManageUser, Dashboard } from './containers/Admin'
+import { ChatBoxAI } from './components'
 import * as actions from './store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
@@ -76,6 +77,8 @@ function App() {
         theme="color"
       />
       <ToastContainer />
+      {/* ChatBox AI Gemini - Trợ lý AI góc dưới phải */}
+      <ChatBoxAI />
     </div>
   );
 }
