@@ -32,9 +32,9 @@ const Home = () => {
         }
     }, [])
     return (
-        <div className='w-full flex gap-6 flex-col items-center h-full'>
+        <div className='w-full flex gap-6 flex-col items-center h-full bg-gradient-to-b from-blue-50 via-white to-gray-50'>
             <Header />
-            <div ref={navRef} className='w-full'>
+            <div ref={navRef} className='w-full transition-all duration-300'>
                 <Navigation />
             </div>
             {location.pathname !== `/${path.CONTACT}` && location.pathname !== `/${path.LOGIN}` && !location.pathname?.includes(path.DETAIL) && !location.pathname?.includes(path.WISHLIST) && <Search />}

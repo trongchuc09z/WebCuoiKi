@@ -15,15 +15,17 @@ const ProvinceBtn = ({ name, image, provinceCode }) => {
     }
     return (
         <div
-            className='shadow-md rounded-bl-md text-blue-700 rounded-br-md cursor-pointer hover:text-orange-600'
+            className='shadow-lg rounded-lg text-blue-700 cursor-pointer card-hover overflow-hidden bg-white transition-all duration-300 animate-scale-in'
             onClick={handleOnClick}
         >
-            <img
-                src={image}
-                alt={name}
-                className='w-[190px] h-[110px] object-cover rounded-tl-md rounded-tr-md'
-            />
-            <div className='font-medium p-2 text-center'>{name}</div>
+            <div className='img-zoom overflow-hidden'>
+                <img
+                    src={image}
+                    alt={name}
+                    className='w-[190px] h-[110px] object-cover transition-transform duration-500'
+                />
+            </div>
+            <div className='font-semibold p-3 text-center hover:text-orange-600 transition-colors duration-300 bg-gradient-to-t from-blue-50 to-white'>{name}</div>
         </div>
     )
 }

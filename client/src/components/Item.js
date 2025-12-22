@@ -26,30 +26,30 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
         }
     }
     return (
-        <div className='w-full flex border-t border-orange-600 py-4 relative'>
+        <div className='w-full flex border-t border-orange-600 py-4 relative card-hover bg-white rounded-lg shadow-sm mb-3 animate-fade-in-up'>
             <Link
                 to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/', ''))}/${id}`}
-                className='w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer'
+                className='w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer img-zoom overflow-hidden rounded-l-lg'
             >
                 {images && images?.length > 0 && images.filter((i, index) => [...Array(4).keys()].some(i => i === index))?.map((i, index) => {
                     return (
-                        <img key={index} src={i} alt="preview" className='w-[47%] h-[120px] object-cover' />
+                        <img key={index} src={i} alt="preview" className='w-[47%] h-[120px] object-cover transition-transform duration-500' />
                     )
                 })}
-                <span className='bg-overlay-70 text-white px-2 rounded-md absolute left-1 bottom-4'>{`${images?.length} ảnh`}</span>
+                <span className='bg-overlay-70 text-white px-2 py-1 rounded-md absolute left-1 bottom-4 backdrop-blur-sm text-sm'>{`${images?.length} ảnh`}</span>
             </Link>
             <div
-                className='text-white absolute p-4 right-5 bottom-2 left-[27%]'
+                className='text-white absolute p-4 right-5 bottom-2 left-[27%] cursor-pointer transition-transform duration-300 hover:scale-125'
                 onClick={e => {
                     e.stopPropagation()
                     handleUpdateWishlist(e)
                 }}
             >
-                {islover ? <RiHeartFill size={26} color='red' /> : <RiHeartLine size={26} />}
+                {islover ? <RiHeartFill size={26} color='red' className="animate-pulse" /> : <RiHeartLine size={26} className="hover:text-red-500 transition-colors" />}
             </div>
-            <div className='w-3/5'>
+            <div className='w-3/5 pl-3'>
                 <div className='flex justify-between gap-4 w-full'>
-                    <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/', ''))}/${id}`} className='text-red-600 font-medium'>
+                    <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/', ''))}/${id}`} className='text-red-600 font-medium hover:text-red-700 transition-colors duration-300'>
                         {handleStar(+star).length > 0 && handleStar(+star).map((star, number) => {
                             return (
                                 <span key={number}>{star}</span>
@@ -59,9 +59,9 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
                     </Link>
                 </div>
                 <div className='my-2 flex items-center justify-between gap-2'>
-                    <span className='font-bold flex-3 text-green-600  whitespace-nowrap overflow-hidden text-ellipsis'>{attributes?.price}</span>
-                    <span className='flex-1'>{attributes?.acreage}</span>
-                    <span className='flex-3 whitespace-nowrap overflow-hidden text-ellipsis'>
+                    <span className='font-bold flex-3 text-green-600 whitespace-nowrap overflow-hidden text-ellipsis text-lg'>{attributes?.price}</span>
+                    <span className='flex-1 text-gray-600'>{attributes?.acreage}</span>
+                    <span className='flex-3 whitespace-nowrap overflow-hidden text-ellipsis text-gray-500'>
                         {`${address?.split(',')[address?.split(',').length - 2]}${address?.split(',')[address?.split(',').length - 1]}`}
                     </span>
                 </div>
@@ -69,30 +69,32 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
                     {description}
                 </p> */}
                 <div className='flex items-center my-5 justify-between'>
-                    <div className=' flex items-center'>
+                    <div className='flex items-center gap-2'>
                         <img 
                             src={user?.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=random&color=fff&size=128`} 
                             alt="avatar" 
-                            className='w-[25px] h-[25px] object-cover rounded-full mr-2' 
+                            className='w-[30px] h-[30px] object-cover rounded-full mr-1 border-2 border-blue-400 transition-transform duration-300 hover:scale-110 hover:border-blue-600' 
                             onError={(e) => {
                                 e.target.onerror = null;
                                 e.target.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
                             }}
                         />
-                        <p>{user?.name}</p>
+                        <p className='font-medium text-gray-700'>{user?.name}</p>
                     </div>
-                    <div className='flex items-center gap-1'>
+                    <div className='flex items-center gap-2'>
                         <a
-                            className='bg-blue-700 text-white p-1 rounded-md'
+                            className='bg-blue-700 text-white px-3 py-1.5 rounded-md hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg'
                             href='/'
                             target='_blank'
+                            rel="noreferrer"
                         >
                             {`Gọi ${user?.phone}`}
                         </a>
                         <a
-                            className='text-blue-700 px-1 rounded-md border border-blue-700'
+                            className='text-blue-700 px-3 py-1.5 rounded-md border border-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md'
                             href={`https://zalo.me/${user?.zalo}`}
                             target='_blank'
+                            rel="noreferrer"
                         >
                             Nhắn zalo
                         </a>

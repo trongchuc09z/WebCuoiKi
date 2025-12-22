@@ -67,23 +67,30 @@ const Login = () => {
     }
 
     return (
-        <div className='w-full flex items-center justify-center'>
-            {isLoading && <div className='fixed top-0 right-0 left-0 bottom-0 bg-overlay-70 flex items-center justify-center'>
+        <div className='w-full flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8'>
+            {isLoading && <div className='fixed top-0 right-0 left-0 bottom-0 bg-overlay-70 flex items-center justify-center z-50 backdrop-blur-sm'>
                 <Loading />
             </div>}
-            {isForgot && <div onClick={() => setIsForgot(false)} className='fixed top-0 right-0 left-0 bottom-0 bg-overlay-70 flex items-center justify-center'>
-                <div onClick={e => e.stopPropagation()} className='w-[600px] bg-white rounded-md p-4 flex flex-col gap-2'>
-                    <span className='font-semibold'>Nhập email của bạn:</span>
+            {isForgot && <div onClick={() => setIsForgot(false)} className='fixed top-0 right-0 left-0 bottom-0 bg-overlay-70 flex items-center justify-center z-50 backdrop-blur-sm animate-fade-in'>
+                <div onClick={e => e.stopPropagation()} className='w-[600px] bg-white rounded-xl p-6 flex flex-col gap-4 shadow-2xl animate-scale-in'>
+                    <span className='font-bold text-xl gradient-text'>Nhập email của bạn:</span>
                     <input type="text"
-                        className='p-2 border rounded-md outline-none placeholder:text-sm placeholder:italic'
+                        className='p-3 border-2 border-blue-200 rounded-lg outline-none placeholder:text-sm placeholder:italic focus:border-blue-400 transition-all duration-300'
                         placeholder='Nhập email để có thể xác thực đổi mật khẩu'
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
-                    <div className='flex justify-end'>
+                    <div className='flex justify-end gap-2'>
                         <button
                             type='button'
-                            className='w-fit px-4 py-2 text-white font-bold bg-blue-500 rounded-md'
+                            className='px-4 py-2 text-gray-600 font-medium bg-gray-200 rounded-lg hover:bg-gray-300 transition-all duration-300'
+                            onClick={() => setIsForgot(false)}
+                        >
+                            Hủy
+                        </button>
+                        <button
+                            type='button'
+                            className='px-6 py-2 text-white font-bold bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg btn-primary shadow-lg'
                             onClick={handleForgotPassword}
                         >
                             Xác nhận
@@ -91,8 +98,8 @@ const Login = () => {
                     </div>
                 </div>
             </div>}
-            <div className='bg-white w-[600px] p-[30px] pb-[100px] rounded-md shadow-sm'>
-                <h3 className='font-semibold text-2xl mb-3'>{isRegister ? 'Đăng kí tài khoản' : 'Đăng nhập'}</h3>
+            <div className='bg-white w-[600px] p-10 pb-12 rounded-2xl shadow-2xl animate-fade-in-up border border-gray-100'>
+                <h3 className='font-bold text-3xl mb-6 gradient-text text-center'>{isRegister ? '🎉 Đăng ký tài khoản' : '👋 Đăng nhập'}</h3>
                 <div className='w-full flex flex-col gap-5'>
                     {isRegister && <InputForm
                         setInvalidFields={setInvalidFields}
@@ -119,23 +126,23 @@ const Login = () => {
                     <InputForm
                         setInvalidFields={setInvalidFields}
                         invalidFields={invalidFields}
-                        label={'MẬT KHÂU'}
+                        label={'MẬT KHẨU'}
                         value={payload.password}
                         setValue={setPayload}
                         keyPayload={'password'}
                         type='password'
                     />
                     <Button
-                        text={isRegister ? 'Đăng kí' : 'Đăng nhập'}
-                        bgColor='bg-secondary1'
+                        text={isRegister ? '✨ Đăng ký ngay' : '🚀 Đăng nhập'}
+                        bgColor='bg-gradient-to-r from-blue-600 to-indigo-600'
                         textColor='text-white'
                         fullWidth
                         onClick={handleSubmit}
                     />
                 </div>
-                <div className='mt-7 flex items-center justify-between'>
+                <div className='mt-8 flex items-center justify-between'>
                     {isRegister
-                        ? <small>Bạn đã có tài khoản? <span
+                        ? <small className='text-gray-600'>Bạn đã có tài khoản? <span
                             onClick={() => {
                                 setIsRegister(false)
                                 setPayload({
@@ -144,12 +151,12 @@ const Login = () => {
                                     name: ''
                                 })
                             }}
-                            className='text-blue-500 hover:underline cursor-pointer'
+                            className='text-blue-600 hover:text-blue-700 font-semibold cursor-pointer transition-colors duration-300 hover:underline'
                         >
                             Đăng nhập ngay
                         </span></small>
                         : <>
-                            <small onClick={() => setIsForgot(true)} className='text-[blue] hover:text-[red] cursor-pointer' >Bạn quên mật khẩu</small>
+                            <small onClick={() => setIsForgot(true)} className='text-blue-600 hover:text-red-500 cursor-pointer font-medium transition-colors duration-300' >🔑 Quên mật khẩu?</small>
                             <small
                                 onClick={() => {
                                     setIsRegister(true)
@@ -159,9 +166,9 @@ const Login = () => {
                                         name: ''
                                     })
                                 }}
-                                className='text-[blue] hover:text-[red] cursor-pointer'
+                                className='text-blue-600 hover:text-red-500 cursor-pointer font-medium transition-colors duration-300'
                             >
-                                Tạo tài khoản mới
+                                ✨ Tạo tài khoản mới
                             </small>
                         </>}
                 </div>

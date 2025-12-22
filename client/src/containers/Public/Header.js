@@ -29,28 +29,28 @@ const Header = () => {
     }, [searchParams.get('page'), location.pathname])
 
     return (
-        <div ref={headerRef} className='w-3/5 '>
-            <div className='w-full flex items-center justify-between'>
-                <Link to={'/'} >
+        <div ref={headerRef} className='w-3/5 animate-fade-in'>
+            <div className='w-full flex items-center justify-between py-2'>
+                <Link to={'/'} className='transition-transform duration-300 hover:scale-105'>
                     <img
                         src={logo}
                         alt="logo"
-                        className='w-[240px] h-[70px] object-contain'
+                        className='w-[240px] h-[70px] object-contain animate-float'
                     />
                 </Link>
-                <div className='flex items-center gap-1'>
-                    {!isLoggedIn && <div className='flex items-center gap-1'>
-                        <small>Phongtrosinhvien xin chào !</small>
+                <div className='flex items-center gap-2'>
+                    {!isLoggedIn && <div className='flex items-center gap-2 animate-slide-up'>
+                        <small className='gradient-text'>Phongtrosinhvien xin chào !</small>
                         <Button
                             text={'Đăng nhập'}
                             textColor='text-white'
-                            bgColor='bg-[#3961fb]'
+                            bgColor='bg-gradient-to-r from-blue-600 to-blue-700'
                             onClick={() => goLogin(false)}
                         />
                         <Button
                             text={'Đăng ký'}
                             textColor='text-white'
-                            bgColor='bg-[#3961fb]'
+                            bgColor='bg-gradient-to-r from-blue-600 to-blue-700'
                             onClick={() => goLogin(true)}
                         />
                     </div>}
