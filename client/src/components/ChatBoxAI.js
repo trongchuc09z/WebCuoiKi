@@ -54,11 +54,15 @@ NHIỆM VỤ CỦA BẠN:
 
 PHONG CÁCH TRẢ LỜI:
 - Thân thiện, nhiệt tình, chuyên nghiệp
-- Ngắn gọn, súc tích (2-4 câu)
-- Sử dụng emoji phù hợp
-- Đưa ra gợi ý cụ thể
+- Trả lời đầy đủ, chi tiết, có cấu trúc rõ ràng
+- Sử dụng emoji phù hợp để dễ đọc
+- Đưa ra gợi ý cụ thể và thực tế
+- Có thể sử dụng danh sách (bullet points) khi cần
+- Giải thích kỹ lưỡng để người dùng hiểu rõ
 
-Câu hỏi của người dùng: ${userMessage}`;
+Hãy trả lời câu hỏi sau một cách chi tiết và hữu ích:
+
+${userMessage}`;
       
       const MODEL = 'gemini-2.5-flash';
 
@@ -77,7 +81,10 @@ Câu hỏi của người dùng: ${userMessage}`;
             }],
             generationConfig: {
               temperature: 0.7,
-              maxOutputTokens: 500,
+              topP: 0.95,
+              topK: 40,
+              maxOutputTokens: 2048,
+              responseMimeType: "text/plain",
             }
           })
         }
