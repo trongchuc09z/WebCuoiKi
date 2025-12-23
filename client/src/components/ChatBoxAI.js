@@ -173,8 +173,8 @@ ${userMessage}`;
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></span>
               </div>
               <div>
-                <h3 className="font-bold text-lg">Trợ lý AI</h3>
-                <p className="text-xs opacity-90">Powered by Gemini ✨</p>
+                <h3 className="font-bold text-lg">AI Assistant</h3>
+                <p className="text-xs opacity-90">Trợ lý ảo thông minh ✨</p>
               </div>
             </div>
             <button

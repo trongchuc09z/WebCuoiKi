@@ -59,7 +59,7 @@ const settings = {
 
 const BannerSlider = () => {
     return (
-        <div className='w-full mb-6 rounded-lg overflow-hidden shadow-lg'>
+    <div className='relative left-1/2 right-1/2 -translate-x-1/2 w-screen mb-6 rounded-lg overflow-hidden shadow-lg'>
             <Slider {...settings}>
                 {bannerData.map((banner) => (
                     <div key={banner.id} className='relative'>

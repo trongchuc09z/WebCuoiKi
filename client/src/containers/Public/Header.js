@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as actions from '../../store/actions'
 import menuManage from '../../ultils/menuManage'
 import menuAdmin from '../../ultils/menuAdmin'
+import { Navigation} from './index'
 
 
 const { AiOutlinePlusCircle, AiOutlineLogout, BsChevronDown } = icons
@@ -28,30 +29,58 @@ const Header = () => {
         headerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, [searchParams.get('page'), location.pathname])
 
+
+    useEffect(() => {
+        const handleScroll = (e) => {
+            if (window.pageYOffset >= 134) {
+                headerRef.current.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+                `
+            } else {
+                headerRef.current.style.cssText = `
+                width: 100%
+                `
+            }
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     return (
-        <div ref={headerRef} className='w-3/5 animate-fade-in'>
+        <div ref={headerRef} className='w-full animate-fade-in bg-white  rounded-md shadow-sm px-4 py-2'>
             <div className='w-full flex items-center justify-between py-2'>
                 <Link to={'/'} className='transition-transform duration-300 hover:scale-105'>
                     <img
                         src={logo}
                         alt="logo"
                         className='w-[240px] h-[70px] object-contain animate-float'
+                        onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                     />
                 </Link>
+
+                <div className='w-full transition-all duration-300'>
+                    <Navigation />
+                </div>
                 <div className='flex items-center gap-2'>
                     {!isLoggedIn && <div className='flex items-center gap-2 animate-slide-up'>
                         <small className='gradient-text'>Phongtrosinhvien xin chào !</small>
                         <Button
                             text={'Đăng nhập'}
                             textColor='text-white'
-                            bgColor='bg-gradient-to-r from-blue-600 to-blue-700'
-                            onClick={() => goLogin(false)}
+                            bgColor='bg-gradient-to-r from-[#FBB91C] to-[#FF5B35]'
+                            onClick={() => { goLogin(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                         />
                         <Button
                             text={'Đăng ký'}
                             textColor='text-white'
-                            bgColor='bg-gradient-to-r from-blue-600 to-blue-700'
-                            onClick={() => goLogin(true)}
+                            bgColor='bg-gradient-to-r from-[#FBB91C] to-[#FF5B35]'
+                            onClick={() => { goLogin(true); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                         />
                     </div>}
                     {isLoggedIn && <div className='flex items-center gap-3 relative'>
