@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { formatVietnameseToString } from '../../ultils/Common/formatVietnameseToString'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../../store/actions'
@@ -16,12 +16,17 @@ const Navigation = ({ isAdmin }) => {
     const dispatch = useDispatch()
     const { categories } = useSelector(state => state.app)
     const { currentData } = useSelector(state => state.user)
+    const location = useLocation()
     useEffect(() => {
         dispatch(actions.getCategories())
     }, [])
+    // scroll to top on route change (covers clicks and programmatic navigation)
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, [location.pathname])
     return (
         <div className={`w-full flex ${isAdmin ? 'justify-start' : 'justify-center'} items-center h-[40px] bg-gradient-to-r from-secondary1 to-blue-600 text-[#58546A]  animate-slide-down`}>
-            <div className='w-4/5 flex h-full items-center text-base font-semibold'>
+            <div className='w-3.5/5 flex h-full items-center text-base font-semibold'>
                 <NavLink
                     to={`/`}
                     className={({ isActive }) => isActive ? active : notActive}

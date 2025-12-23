@@ -1,7 +1,7 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { memuSidebar } from '../../ultils/constant'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { AiOutlineLogout } from 'react-icons/ai'
 
 const activeStyle = 'font-medium px-[10px] gap-4 h-[40px] flex items-center hover:bg-gray-200 bg-gray-200'
@@ -10,6 +10,12 @@ const notActiceStyle = 'font-medium px-[10px] gap-4 h-[40px] flex items-center h
 const AdminSidebar = ({ admin }) => {
     const navigate = useNavigate()
     const { currentData } = useSelector(state => state.user)
+    const location = useLocation()
+
+    useEffect(() => {
+        // scroll to top on admin route change
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, [location.pathname])
     return (
         <div className='flex-none p-4 flex flex-col gap-6 bg-white min-h-screen'>
             <div className='flex flex-col gap-4'>

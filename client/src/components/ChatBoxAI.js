@@ -152,7 +152,7 @@ ${userMessage}`;
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center animate-bounce"
+          className="group bg-gradient-to-r from-[#FF5B35] to-[#FF5B35] hover:from-[#FF5B35] hover:to-[#FF5B35] text-white rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center animate-bounce"
           title="Chat với AI Gemini"
         >
           <FaRobot className="text-3xl" />
@@ -166,7 +166,7 @@ ${userMessage}`;
       {isOpen && (
         <div className="bg-white rounded-2xl shadow-2xl w-80 sm:w-96 flex flex-col overflow-hidden" style={{ height: '550px' }}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 text-white p-4 flex justify-between items-center">
+          <div className="bg-gradient-to-r from-[#FF5B35] via-[#FF5B35] to-[#FF5B35] text-white p-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
               <div className="relative">
                 <FaRobot className="text-2xl animate-pulse" />
@@ -196,7 +196,7 @@ ${userMessage}`;
                 <div
                   className={`max-w-[85%] p-3 rounded-2xl shadow-md ${
                     msg.role === 'user'
-                      ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-br-none'
+                      ? 'bg-gradient-to-r from-[#FF5B35] to-[#FF5B35] text-white rounded-br-none'
                       : 'bg-white text-gray-800 rounded-bl-none border border-gray-200'
                   }`}
                 >
@@ -209,9 +209,9 @@ ${userMessage}`;
               <div className="flex justify-start">
                 <div className="bg-white text-gray-800 shadow-md p-4 rounded-2xl rounded-bl-none border border-gray-200">
                     <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-[#ff5b35] rounded-full animate-bounce"></span>
-                    <span className="w-2 h-2 bg-[#ff5b35] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
-                    <span className="w-2 h-2 bg-[#ff5b35] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                    <span className="w-2 h-2 bg-[#FF5B35] rounded-full animate-bounce"></span>
+                    <span className="w-2 h-2 bg-[#FF5B35] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
+                    <span className="w-2 h-2 bg-[#FF5B35] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
                   </div>
                 </div>
               </div>
@@ -229,7 +229,7 @@ ${userMessage}`;
                   <button
                     key={i}
                     onClick={() => handleQuickQuestion(q)}
-                    className="text-xs bg-white hover:bg-[#ff5b35] text-blue-600 px-3 py-1 rounded-full border border-blue-200 transition-colors"
+                    className="text-xs bg-white hover:bg-[#FF5B35] text-[#FF5B35] px-3 py-1 rounded-full border border-[#FF5B35] transition-colors"
                   >
                     {q}
                   </button>
@@ -247,13 +247,13 @@ ${userMessage}`;
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Nhập câu hỏi của bạn..."
-                className="flex-1 border-2 border-gray-300 rounded-xl px-4 py-2.5 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm transition-all"
+                className="flex-1 border-2 border-gray-300 rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#FF5B35] focus:ring-2 focus:ring-[#FF5B35] text-sm transition-all"
                 disabled={isLoading}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !inputMessage.trim()}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white rounded-xl px-4 py-2.5 transition-all shadow-md hover:shadow-lg"
+                className="bg-gradient-to-r from-[#FF5B35] to-[#FF5B35] hover:from-[#FF5B35] hover:to-[#FF5B35] disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white rounded-xl px-4 py-2.5 transition-all shadow-md hover:shadow-lg"
                 title="Gửi"
               >
                 <AiOutlineSend className="text-xl" />

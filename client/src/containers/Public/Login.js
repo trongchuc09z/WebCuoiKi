@@ -156,7 +156,7 @@ const Login = () => {
                             Đăng nhập ngay
                         </span></small>
                         : <>
-                            <small onClick={() => setIsForgot(true)} className='text-blue-600 hover:text-red-500 cursor-pointer font-medium transition-colors duration-300' >🔑 Quên mật khẩu?</small>
+                            <small onClick={() => setIsForgot(true)} className='text-blue-600 hover:text-red-500 cursor-pointer font-medium transition-colors duration-300' >Quên mật khẩu?</small>
                             <small
                                 onClick={() => {
                                     setIsRegister(true)
@@ -168,7 +168,7 @@ const Login = () => {
                                 }}
                                 className='text-blue-600 hover:text-red-500 cursor-pointer font-medium transition-colors duration-300'
                             >
-                                ✨ Tạo tài khoản mới
+                                Tạo tài khoản mới
                             </small>
                         </>}
                 </div>
