@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@paypal/react-paypal-js": "^7.8.3",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^8.18.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -32,6 +34,7 @@
     "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.4.33",
+    "three": "^0.182.0",
     "thunk": "0.0.1",
     "web-vitals": "^2.1.4"
   },

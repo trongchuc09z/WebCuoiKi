@@ -17,6 +17,11 @@ import { apiGetPost } from "../../services/post"
 import { useSelector } from "react-redux"
 import { apiGetLocationsFromSearchTerm } from "../../services"
 
+// ... các import cũ
+import Model3DViewer from '../../components/Model3DViewer';   // ĐÚNG: Chỉ đi lên 2 cấp
+import roomModel from '../../assets/room.glb';               // ĐÚNG: Chỉ đi lên 2 cấp
+
+
 const { HiLocationMarker, TbReportMoney, RiCrop2Line, BsStopwatch, BsHash, MdReportProblem } = icons
 
 const DetailPost = () => {
@@ -117,6 +122,18 @@ const DetailPost = () => {
     })()
   }
 />
+// 3D Model Viewer Section
+<div className='mt-8'>
+    <h3 className='font-semibold text-xl my-4'>Mô phỏng phòng 3D</h3>
+
+    {/* Gọi component và truyền file đã import vào */}
+    <Model3DViewer modelSource={roomModel} />
+
+    <p className='text-sm text-gray-500 italic mt-2'>
+        * Xoay và phóng to để xem chi tiết căn phòng
+    </p>
+</div>
+
 // ...existing code...
         <div className="bg-white rounded-md shadow-md p-4">
           <div className="flex flex-col gap-2">
