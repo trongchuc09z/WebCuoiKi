@@ -198,7 +198,7 @@ const Modal = ({ setIsShowModal, content, name, handleSubmit, queries, arrMinMax
                                     <button
                                         key={item.code}
                                         onClick={() => handleActive(item.code, item.value)}
-                                        className={`px-4 py-2 bg-gray-200 rounded-md cursor-pointer ${item.code === activedEl ? 'bg-blue-500 text-white' : ''}`}
+                                        className={`px-4 py-2 bg-gray-200 rounded-md cursor-pointer ${item.code === activedEl ? 'bg-[#ff5b35] text-white' : ''}`}
                                     >
                                         {item.value}
                                     </button>

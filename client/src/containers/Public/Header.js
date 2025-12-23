@@ -88,7 +88,7 @@ const Header = () => {
                         <Button
                             text={'Quản lý tài khoản'}
                             textColor='text-white'
-                            bgColor='bg-blue-700'
+                            bgColor='bg-[#ff5b35]'
                             px='px-4'
                             IcAfter={BsChevronDown}
                             onClick={() => currentData?.role === 'R3' ? navigate('/he-thong/sua-thong-tin-ca-nhan') : setIsShowMenu(prev => !prev)}

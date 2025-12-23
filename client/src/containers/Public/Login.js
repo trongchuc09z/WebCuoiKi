@@ -99,7 +99,7 @@ const Login = () => {
                 </div>
             </div>}
             <div className='bg-white w-[600px] p-10 pb-12 rounded-2xl shadow-2xl animate-fade-in-up border border-gray-100'>
-                <h3 className='font-bold text-3xl mb-6 gradient-text text-center'>{isRegister ? '🎉 Đăng ký tài khoản' : '👋 Đăng nhập'}</h3>
+                <h3 className='font-bold text-3xl mb-6 text-[#B53518] text-center'>{isRegister ? 'Đăng ký tài khoản' : 'Đăng nhập'}</h3>
                 <div className='w-full flex flex-col gap-5'>
                     {isRegister && <InputForm
                         setInvalidFields={setInvalidFields}
@@ -133,8 +133,8 @@ const Login = () => {
                         type='password'
                     />
                     <Button
-                        text={isRegister ? '✨ Đăng ký ngay' : '🚀 Đăng nhập'}
-                        bgColor='bg-gradient-to-r from-blue-600 to-indigo-600'
+                        text={isRegister ? 'Đăng ký ngay' : 'Đăng nhập'}
+                        bgColor='bg-gradient-to-r from-[#FBB91C] via-[#FF5B35] to-[#E74F2C]'
                         textColor='text-white'
                         fullWidth
                         onClick={handleSubmit}

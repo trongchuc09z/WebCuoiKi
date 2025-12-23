@@ -59,7 +59,7 @@ const ManageExpired = () => {
                     <button
                         type='button'
                         onClick={handleSubmit}
-                        className='py-2 px-4 bg-blue-600 rounded-md text-white font-semibold flex items-center justify-center gap-2'
+                        className='py-2 px-4 bg-[#ff5b35] rounded-md text-white font-semibold flex items-center justify-center gap-2'
                     >
                         <span>Update</span>
                     </button>

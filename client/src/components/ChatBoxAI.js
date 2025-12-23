@@ -208,10 +208,10 @@ ${userMessage}`;
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-white text-gray-800 shadow-md p-4 rounded-2xl rounded-bl-none border border-gray-200">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></span>
-                    <span className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
-                    <span className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                    <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-[#ff5b35] rounded-full animate-bounce"></span>
+                    <span className="w-2 h-2 bg-[#ff5b35] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
+                    <span className="w-2 h-2 bg-[#ff5b35] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
                   </div>
                 </div>
               </div>
@@ -229,7 +229,7 @@ ${userMessage}`;
                   <button
                     key={i}
                     onClick={() => handleQuickQuestion(q)}
-                    className="text-xs bg-white hover:bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-200 transition-colors"
+                    className="text-xs bg-white hover:bg-[#ff5b35] text-blue-600 px-3 py-1 rounded-full border border-blue-200 transition-colors"
                   >
                     {q}
                   </button>

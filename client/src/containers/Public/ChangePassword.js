@@ -25,7 +25,7 @@ const ChangePassword = () => {
                 />
                 <Button
                     text={'Xác nhận'}
-                    bgColor={'bg-blue-500'}
+                    bgColor={'bg-[#ff5b35]'}
                     textColor={'text-white'}
                     onClick={handleChangePassword}
                 />

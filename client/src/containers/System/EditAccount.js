@@ -86,7 +86,7 @@ const EditAccount = () => {
                     </div>
                     <Button
                         text='Cập nhật'
-                        bgColor='bg-blue-600'
+                        bgColor='bg-[#ff5b35]'
                         textColor='text-white'
                         onClick={handleSubmit}
                     />

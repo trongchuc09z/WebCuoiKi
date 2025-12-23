@@ -91,7 +91,7 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
                             {`${user?.phone}`}
                         </a>
                         <a
-                            className='text-blue-700 px-3 py-1.5 rounded-md border border-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md'
+                            className='text-blue-700 px-3 py-1.5 rounded-md border border-blue-700 hover:bg-[#ff5b35] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md'
                             href={`https://zalo.me/${user?.zalo}`}
                             target='_blank'
                             rel="noreferrer"

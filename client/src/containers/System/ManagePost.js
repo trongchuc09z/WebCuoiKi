@@ -70,7 +70,7 @@ const ManagePost = () => {
         <div className='flex flex-col gap-6'>
             {isExpired && <div onClick={() => setIsExpired(null)} className='absolute top-0 left-0 bottom-0 right-0 bg-overlay-30 flex justify-center items-center'>
                 <div onClick={e => e.stopPropagation()} className='p-8 bg-white w-[600px] rounded-md flex flex-col gap-2'>
-                    <p className='p-2 border-blue-500 border rounded-md text-justify text-sm bg-blue-100 text-blue-800'>
+                    <p className='p-2 border-blue-500 border rounded-md text-justify text-sm bg-[#ff5b35] text-blue-800'>
                         Gia hạn ngày đăng bài, người đăng có thể chọn 2 phương án dưới đây:
                         <ul className='italic'>
                             <li><span className='font-bold'>Thanh toán nhanh:</span> Thanh toán trực tiếp qua paypal và bài đăng sẽ ngay lập tức được cộng thêm số ngày được gian hạn tính từ hôm nay</li>
@@ -89,7 +89,7 @@ const ManagePost = () => {
                     </span>
                     <button
                         type='button'
-                        className='px-4 py-2 text-white font-bold bg-blue-500 rounded-md'
+                        className='px-4 py-2 text-white font-bold bg-[#ff5b35] rounded-md'
                         onClick={handleExpired}
                     >
                         Gia hạn
@@ -109,14 +109,14 @@ const ManagePost = () => {
             </div>}
             <div className='py-4 border-b border-gray-200 flex items-center justify-between'>
                 <h1 className='text-3xl font-medium '>Quản lý tin đăng</h1>
-                <div className='text-sm p-4 rounded-md text-blue-800 bg-blue-200 italic'>Sau khi xác nhận gia hạn, vui lòng chủ trọ hãy bank tiền gia hạn theo <a className='text-blue-500 hover:underline' href='http://zalo.me/0862434001'>tài khoản này</a> để admin duyệt nhé ~</div>
+                <div className='text-sm p-4 rounded-md text-blue-800 bg-[#ff5b35] italic'>Sau khi xác nhận gia hạn, vui lòng chủ trọ hãy bank tiền gia hạn theo <a className='text-blue-500 hover:underline' href='http://zalo.me/0862434001'>tài khoản này</a> để admin duyệt nhé ~</div>
                 <select onChange={e => setStatus(+e.target.value)} value={status} className='outline-none border p-2 border-gray-200 rounded-md'>
                     <option value="">Lọc theo trạng thái</option>
                     <option value="1">Đang hoạt động</option>
                     <option value="2">Đã hết hạn</option>
                 </select>
             </div>
-            {reportPosts && Object.keys(reportPosts).length > 0 && <div className='p-4 border relative rounded-md bg-blue-100 border-blue-500 text-sm'>
+            {reportPosts && Object.keys(reportPosts).length > 0 && <div className='p-4 border relative rounded-md bg-[#ff5b35] border-blue-500 text-sm'>
                 <span onClick={handleSeenReport} className='absolute p-2 cursor-pointer right-[8px] top-[8px]'>X</span>
                 <h1 className='font-medium text-blue-600'>Thông báo:</h1>
                 <ul>

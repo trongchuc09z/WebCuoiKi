@@ -37,7 +37,7 @@ const ResetPass = () => {
                 </div>
                 <button
                     type='button'
-                    className='py-2 px-4 rounded-md text-white bg-main font-semibold bg-blue-500 mt-4'
+                    className='py-2 px-4 rounded-md text-white bg-main font-semibold bg-[#ff5b35] mt-4'
                     onClick={handleSubmit}
                 >
                     Xác nhận
