@@ -36,6 +36,7 @@ const CreatePost = ({ isEdit }) => {
   })
   const [imagesPreview, setImagesPreview] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [file3D, setFile3D] = useState(null)
   const { prices, areas, categories, provinces } = useSelector((state) => state.app)
   const { currentData } = useSelector((state) => state.user)
   const [invalidFields, setInvalidFields] = useState([])
@@ -76,6 +77,18 @@ const CreatePost = ({ isEdit }) => {
     setImagesPreview((prev) => [...prev, ...images])
     setPayload((prev) => ({ ...prev, images: [...prev.images, ...images] }))
   }
+  const handle3DFileChange = (e) => {
+     const f = e.target.files && e.target.files[0]
+     if (!f) return
+     // keep the file object for UI and store name in payload for submission if needed
+     setFile3D(f)
+     setPayload((prev) => ({ ...prev, file3DName: f.name }))
+  }
+  const remove3DFile = () => {
+     setFile3D(null)
+     setPayload((prev) => ({ ...prev, file3DName: "" }))
+  }
+
   const handleDeleteImage = (image) => {
     setImagesPreview((prev) => prev?.filter((item) => item !== image))
     setPayload((prev) => ({
@@ -142,7 +155,9 @@ const CreatePost = ({ isEdit }) => {
       description: "",
       target: "",
       province: "",
+      file3DName: "",
     })
+    setFile3D(null)
   }
 
   return (
@@ -164,6 +179,33 @@ const CreatePost = ({ isEdit }) => {
             payload={payload}
             setPayload={setPayload}
           />
+          <div className="w-full mb-6">
+            <h2 className="font-semibold text-xl py-4">File 3D (nếu có)</h2>
+            <p className="text-sm text-gray-600 mb-2">
+              Tải lên mô hình 3D để hiển thị chi tiết hơn. Hỗ trợ: .glb, .gltf, .obj, .fbx, .zip
+            </p>
+            <div className="flex items-center gap-4 mb-3">
+              <label
+                htmlFor="file3d"
+                className="px-4 py-2 bg-gray-100 border rounded cursor-pointer hover:bg-gray-200 text-sm"
+                title="Chọn file 3D"
+              >
+                Chọn file 3D
+              </label>
+              <span className="text-sm text-gray-700">{file3D ? file3D.name : "Chưa có file được chọn"}</span>
+              {file3D && (
+                <button
+                  type="button"
+                  onClick={remove3DFile}
+                  className="text-red-500 hover:underline text-sm"
+                  title="Xóa file 3D"
+                >
+                  Xóa
+                </button>
+              )}
+            </div>
+            <input id="file3d" type="file" accept=".glb,.gltf,.obj,.fbx,.zip" hidden onChange={handle3DFileChange} />
+          </div>
           <div className="w-full mb-6">
             <h2 className="font-semibold text-xl py-4">Hình ảnh</h2>
             <small>Cập nhật hình ảnh rõ ràng sẽ cho thuê nhanh hơn</small>
