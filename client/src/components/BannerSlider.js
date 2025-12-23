@@ -10,35 +10,35 @@ const bannerData = [
         id: 1,
         image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&h=400&fit=crop',
         title: 'Cho thuê căn hộ',
-        description: 'Hàng nghìn căn hộ chất lượng, đa dạng mức giá phù hợp với nhu cầu',
+    description: 'Hàng nghìn căn hộ chất lượng, từ studio tới căn hộ cao cấp; đa dạng mức giá và vị trí thuận tiện gần trung tâm, nhiều tiện ích xung quanh — phù hợp cho sinh viên, cặp đôi hoặc gia đình tìm chỗ ở lâu dài.',
         link: `/${path.CHO_THUE_CAN_HO}`
     },
     {
         id: 2,
         image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=400&fit=crop',
         title: 'Cho thuê mặt bằng',
-        description: 'Mặt bằng kinh doanh vị trí đẹp, giá cả hợp lý',
+    description: 'Mặt bằng kinh doanh mặt tiền, vị trí đắc địa và lưu lượng khách cao; nhiều lựa chọn diện tích, hỗ trợ thủ tục thuê nhanh chóng và các phương án thuê phù hợp với cửa hàng, quán cafe hoặc văn phòng.',
         link: `/${path.CHO_THUE_MAT_BANG}`
     },
     {
         id: 3,
         image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=400&fit=crop',
         title: 'Cho thuê phòng trọ',
-        description: 'Phòng trọ giá rẻ, tiện nghi đầy đủ, cập nhật liên tục',
+    description: 'Phòng trọ giá phải chăng, sạch sẽ và đầy đủ nội thất cơ bản; an ninh đảm bảo, nhiều lựa chọn gần trường học và khu công nghiệp, thông tin được cập nhật liên tục kèm hình ảnh và liên hệ rõ ràng.',
         link: `/${path.CHO_THUE_PHONG_TRO}`
     },
     {
         id: 4,
         image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&h=400&fit=crop',
         title: 'Nhà cho thuê',
-        description: 'Nhà nguyên căn giá tốt, thông tin chính xác, uy tín',
+    description: 'Nhà nguyên căn cho thuê với nhiều lựa chọn từ nhà phố tới biệt thự nhỏ; thông tin minh bạch, giá cả hợp lý và phù hợp cho gia đình hoặc doanh nghiệp nhỏ cần không gian riêng.',
         link: `/${path.NHA_CHO_THUE}`
     },
     {
         id: 5,
         image: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=400&fit=crop',
         title: 'Liên hệ',
-        description: 'Hỗ trợ tư vấn 24/7, đăng tin nhanh chóng, hiệu quả',
+    description: 'Liên hệ để được tư vấn 24/7, hỗ trợ đăng tin nhanh và tối ưu hiển thị, giúp kết nối người thuê và chủ nhà hiệu quả; đội ngũ hỗ trợ luôn sẵn sàng giải đáp mọi thắc mắc.',
         link: `/${path.CONTACT}`
     }
 ];
@@ -73,19 +73,19 @@ const BannerSlider = () => {
                             <div className='absolute inset-0 bg-gradient-to-r from-black/60 to-black/20'></div>
                             
                             {/* Content */}
-                            <div className='absolute inset-0 flex flex-col justify-center items-start px-8 md:px-16'>
+                            <div className='absolute inset-0 flex flex-col justify-center items-start px-14 md:px-56'>
                                 <h2 className='text-white text-3xl md:text-5xl font-bold mb-4 animate-fadeIn'>
                                     {banner.title}
                                 </h2>
                                 <p className='text-white text-lg md:text-xl mb-6 animate-fadeIn'>
                                     {banner.description}
                                 </p>
-                                <Link 
+                                {/* <Link 
                                     to={banner.link}
                                     className='bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105'
                                 >
                                     Xem ngay
-                                </Link>
+                                </Link> */}
                             </div>
                         </div>
                     </div>

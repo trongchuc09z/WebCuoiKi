@@ -24,7 +24,7 @@ const Contact = () => {
             </div>
             <Button
                 text='Gửi liên hệ'
-                bgColor='bg-blue-600'
+                bgColor='bg-orange-600 hover:bg-orange-700'
                 textColor='text-white'
                 px='px-6'
             />

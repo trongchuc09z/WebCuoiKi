@@ -76,7 +76,7 @@ const Search = () => {
                 <button
                     type='button'
                     onClick={handleSearch}
-                    className='outline-none py-2 px-4 flex-1 bg-secondary1 text-[13.3px] flex items-center justify-center gap-2 text-white font-medium'
+                    className='outline-none py-2 px-4 flex-1 bg-[#FF5B35] text-[13.3px] flex items-center justify-center gap-2 text-white font-medium'
                 >
                     <FiSearch />
                     Tìm kiếm

@@ -83,12 +83,12 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
                     </div>
                     <div className='flex items-center gap-2'>
                         <a
-                            className='bg-blue-700 text-white px-3 py-1.5 rounded-md hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg'
+                            className='bg-green-600 text-white px-3 py-1.5 rounded-md hover:bg-[#10b981] transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg'
                             href='/'
                             target='_blank'
                             rel="noreferrer"
                         >
-                            {`Gọi ${user?.phone}`}
+                            {`${user?.phone}`}
                         </a>
                         <a
                             className='text-blue-700 px-3 py-1.5 rounded-md border border-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md'
@@ -96,7 +96,7 @@ const Item = ({ images, user, title, star, description, attributes, address, id,
                             target='_blank'
                             rel="noreferrer"
                         >
-                            Nhắn zalo
+                            Zalo
                         </a>
                     </div>
                 </div>
