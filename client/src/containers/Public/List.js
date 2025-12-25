@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Item } from '../../components'
+import Loading from '../../components/Loading'
 import { getPostsLimit } from '../../store/actions/post'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
@@ -11,6 +12,7 @@ const List = ({ categoryCode }) => {
     const { currentData } = useSelector(state => state.user)
     const [sort, setSort] = useState(0)
     const [update, setUpdate] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         let params = []
@@ -38,27 +40,33 @@ const List = ({ categoryCode }) => {
             </div>
             <div className='flex items-center gap-2 my-2'>
                 <span>Sắp xếp:</span>
-                <span onClick={() => setSort(0)} className={`bg-gray-200 p-2 rounded-md cursor-pointer hover:underline ${sort === 0 && 'text-red-500'}`}>Mặc định</span>
-                <span onClick={() => setSort(1)} className={`bg-gray-200 p-2 rounded-md cursor-pointer hover:underline ${sort === 1 && 'text-red-500'}`}>Mới nhất</span>
+                <span onClick={() => { setLoading(true); setSort(0); setTimeout(() => setLoading(false), 600); }} className={`bg-gray-200 p-2 rounded-md cursor-pointer hover:underline ${sort === 0 && 'text-red-500'}`}>Mặc định</span>
+                <span onClick={() => { setLoading(true); setSort(1); setTimeout(() => setLoading(false), 600); }} className={`bg-gray-200 p-2 rounded-md cursor-pointer hover:underline ${sort === 1 && 'text-red-500'}`}>Mới nhất</span>
             </div>
             <div className='items'>
-                {posts?.length > 0 && posts.map(item => {
-                    return (
-                        <Item
-                            key={item?.id}
-                            address={item?.address}
-                            attributes={item?.attributes}
-                            description={JSON.parse(item?.description)}
-                            images={JSON.parse(item?.images?.image)}
-                            star={+item?.star}
-                            title={item?.title}
-                            user={item?.user}
-                            id={item?.id}
-                            islover={item.lovers?.uid === currentData?.id}
-                            setUpdate={setUpdate}
-                        />
-                    )
-                })}
+                {loading ? (
+                    <div className='flex justify-center py-6'>
+                        <Loading />
+                    </div>
+                ) : (
+                    posts?.length > 0 && posts.map(item => {
+                        return (
+                            <Item
+                                key={item?.id}
+                                address={item?.address}
+                                attributes={item?.attributes}
+                                description={JSON.parse(item?.description)}
+                                images={JSON.parse(item?.images?.image)}
+                                star={+item?.star}
+                                title={item?.title}
+                                user={item?.user}
+                                id={item?.id}
+                                islover={item.lovers?.uid === currentData?.id}
+                                setUpdate={setUpdate}
+                            />
+                        )
+                    })
+                )}
             </div>
         </div>
     )

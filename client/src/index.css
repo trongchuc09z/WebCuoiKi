@@ -42,6 +42,17 @@ input[type="range"]::-webkit-slider-runnable-track {
     height: 5px;
 }
 
+/* Đẩy dots lên trên để nằm trong khung nhìn */
+.slick-dots {
+    bottom: 25px !important; /* Thay đổi vị trí từ -25px thành 25px */
+    z-index: 10; /* Đảm bảo nó nằm trên lớp overlay */
+}
+
+/* Tùy chỉnh màu chấm (nếu cần) vì nền ảnh có thể tối/sáng */
+.slick-dots li button:before {
+    color: white !important; /* Đổi màu chấm thành trắng cho dễ nhìn trên nền tối */
+}
+
 input[type="range"]::-moz-range-track {
     -moz-appearance: none;
     height: 5px;

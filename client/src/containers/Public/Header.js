@@ -86,7 +86,7 @@ const Header = () => {
                     {isLoggedIn && <div className='flex items-center gap-3 relative'>
                         <User />
                         <Button
-                            text={'Quản lý tài khoản'}
+                            text={'Quản lý'}
                             textColor='text-white'
                             bgColor='bg-[#ff5b35]'
                             px='px-4'

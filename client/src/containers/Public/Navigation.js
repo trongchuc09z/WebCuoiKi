@@ -26,7 +26,7 @@ const Navigation = ({ isAdmin }) => {
     }, [location.pathname])
     return (
         <div className={`w-full flex ${isAdmin ? 'justify-start' : 'justify-center'} items-center h-[40px] bg-gradient-to-r from-secondary1 to-blue-600 text-[#58546A]  animate-slide-down`}>
-            <div className='w-3.5/5 flex h-full items-center text-base font-semibold'>
+            <div className='w-4/5 flex h-full items-center text-base font-semibold'>
                 <NavLink
                     to={`/`}
                     className={({ isActive }) => isActive ? active : notActive}
