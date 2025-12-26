@@ -62,3 +62,40 @@ export const getMonthsInRange = (start, end) => {
     months += d2.getMonth();
     return months <= 0 ? 0 : months
 }
+
+// client/src/ultils/fn.js
+
+export const addToRecentlyViewed = (post) => {
+    if (!post || !post?.id) return;
+
+    // Lấy danh sách hiện tại từ LocalStorage
+    let viewedList = JSON.parse(localStorage.getItem('recently_viewed_posts')) || [];
+
+    // Lọc bỏ bài đăng này nếu nó đã tồn tại (để đưa nó lên đầu)
+    viewedList = viewedList.filter(item => item.id !== post.id);
+
+    // Chuẩn bị dữ liệu rút gọn để lưu (không lưu cả object to đùng để nhẹ bộ nhớ)
+    const dataToSave = {
+        id: post.id,
+        title: post.title,
+        images: post?.images?.image, // Lưu ý cấu trúc ảnh trong dự án của bạn
+        attributes: {
+            price: post?.attributes?.price,
+            acreage: post?.attributes?.acreage,
+            published: post?.attributes?.published,
+        },
+        address: post?.address,
+        star: post?.star
+    };
+
+    // Thêm vào đầu mảng
+    viewedList.unshift(dataToSave);
+
+    // Giới hạn chỉ lưu 6 bài
+    if (viewedList.length > 6) {
+        viewedList.pop();
+    }
+
+    // Lưu lại vào LocalStorage
+    localStorage.setItem('recently_viewed_posts', JSON.stringify(viewedList));
+};

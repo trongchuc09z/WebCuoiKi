@@ -17,10 +17,13 @@ import { apiGetPost } from "../../services/post"
 import { useSelector } from "react-redux"
 import { apiGetLocationsFromSearchTerm } from "../../services"
 
-// ... các import cũ
-import Model3DViewer from '../../components/Model3DViewer';   // ĐÚNG: Chỉ đi lên 2 cấp
-import roomModel from '../../assets/room.glb';               // ĐÚNG: Chỉ đi lên 2 cấp
+// --- CÁC IMPORT CŨ ---
+import Model3DViewer from '../../components/Model3DViewer';
+import roomModel from '../../assets/room.glb';
 
+// --- THÊM MỚI: Import Component và Hàm xử lý ---
+import RecentlyViewed from '../../components/RecentlyViewed'; // Component hiển thị
+import { addToRecentlyViewed } from '../../ultils/fn';        // Hàm lưu vào localStorage
 
 const { HiLocationMarker, TbReportMoney, RiCrop2Line, BsStopwatch, BsHash, MdReportProblem } = icons
 
@@ -43,6 +46,15 @@ const DetailPost = () => {
     fetchPost()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId, isVote, render])
+
+  // --- THÊM MỚI: useEffect để lưu lịch sử xem ---
+  useEffect(() => {
+    if (post) {
+      // Khi có dữ liệu bài đăng (post không null), gọi hàm lưu
+      addToRecentlyViewed(post);
+    }
+  }, [post]);
+  // ----------------------------------------------
 
   useEffect(() => {
     const fetchLocations = async (address) => {
@@ -76,6 +88,7 @@ const DetailPost = () => {
       fetchLocations(post.address)
     }
   }, [post])
+
   const handleFilterLabel = () => {
     const titleSearch = `Tìm kiếm tin đăng theo chuyên mục ${post?.labelData?.value}`
     navigate(
@@ -86,6 +99,7 @@ const DetailPost = () => {
       { state: { titleSearch } }
     )
   }
+
   return (
     <div className="w-full flex gap-4 relative">
       {isVote && (
@@ -110,28 +124,24 @@ const DetailPost = () => {
         </div>
       )}
       <div className="w-[70%]">
-        {/* <Slider images={post?.images && JSON.parse(post?.images?.image)} /> */}
-<Slider
-  images={
-    (() => {
-      try {
-        return post?.images?.image ? JSON.parse(post.images.image) : []
-      } catch (e) {
-        return []
-      }
-    })()
-  }
-/>
-<div className='mt-8'>
-    <h3 className='font-semibold text-xl my-4'>Mô phỏng phòng 3D</h3>
-
-    {/* Gọi component và truyền file đã import vào */}
-    <Model3DViewer modelSource={roomModel} />
-
-    <p className='text-sm text-gray-500 italic mt-2'>
-        * Xoay và phóng to để xem chi tiết căn phòng
-    </p>
-</div>
+        <Slider
+          images={
+            (() => {
+              try {
+                return post?.images?.image ? JSON.parse(post.images.image) : []
+              } catch (e) {
+                return []
+              }
+            })()
+          }
+        />
+        <div className='mt-8'>
+          <h3 className='font-semibold text-xl my-4'>Mô phỏng phòng 3D</h3>
+          <Model3DViewer modelSource={roomModel} />
+          <p className='text-sm text-gray-500 italic mt-2'>
+            * Xoay và phóng to để xem chi tiết căn phòng
+          </p>
+        </div>
 
         <div className="bg-white rounded-md shadow-md p-4">
           <div className="flex flex-col gap-2">
@@ -274,6 +284,11 @@ const DetailPost = () => {
         <BoxInfo userData={post?.user} />
         <RelatedPost />
         <RelatedPost newPost />
+        
+        {/* --- THÊM MỚI: Hiển thị component đã xem gần đây --- */}
+        <RecentlyViewed />
+        {/* -------------------------------------------------- */}
+        
       </div>
     </div>
   )
