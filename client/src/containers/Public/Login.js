@@ -23,6 +23,13 @@ const Login = () => {
         name: '',
     })
     const [email, setEmail] = useState('')
+
+    // Hàm kiểm tra email có domain PTIT
+    const isPTITEmail = (email) => {
+        const ptitDomains = ['@ptit.edu.vn', '@student.ptit.edu.vn']
+        return ptitDomains.some(domain => email.toLowerCase().endsWith(domain))
+    }
+
     useEffect(() => {
         setIsRegister(location.state?.flag)
     }, [location.state?.flag])
@@ -55,6 +62,13 @@ const Login = () => {
             password: payload.password
         }
         let invalids = validate(finalPayload, setInvalidFields)
+        
+        // Kiểm tra email có domain PTIT khi đăng ký
+        if (isRegister && !isPTITEmail(payload.email)) {
+            Swal.fire('Oops!', 'Chỉ email có domain PTIT (@ptit.edu.vn hoặc @student.ptit.edu.vn) mới được phép đăng ký!', 'error')
+            return
+        }
+        
         if (invalids === 0) {
             setIsLoading(true)
             if (isRegister) {

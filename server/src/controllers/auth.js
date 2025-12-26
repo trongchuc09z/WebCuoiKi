@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs'
 require('dotenv').config()
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
+
 export const register = async (req, res) => {
     const { name, phone, password, email } = req.body
     try {
@@ -14,6 +15,7 @@ export const register = async (req, res) => {
             err: 1,
             msg: 'Missing inputs !'
         })
+        
         const response = await authService.registerService(req.body)
         return res.status(200).json(response)
 

@@ -29,3 +29,27 @@ export const isHost = (req, res, next) => {
         throw new Error('Require Host Role')
     next()
 }
+
+// Middleware kiểm tra email có domain PTIT
+export const verifyPTITEmail = (req, res, next) => {
+    const { email } = req.body
+    
+    if (!email) {
+        return res.status(400).json({
+            err: 1,
+            msg: 'Email is required!'
+        })
+    }
+    
+    const ptitDomains = ['@ptit.edu.vn', '@student.ptit.edu.vn']
+    const isPTITEmail = ptitDomains.some(domain => email.toLowerCase().endsWith(domain))
+    
+    if (!isPTITEmail) {
+        return res.status(400).json({
+            err: 1,
+            msg: 'Chỉ email có domain PTIT (@ptit.edu.vn hoặc @student.ptit.edu.vn) mới được phép đăng ký!'
+        })
+    }
+    
+    next()
+}
