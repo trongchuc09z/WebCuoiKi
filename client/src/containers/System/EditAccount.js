@@ -7,6 +7,7 @@ import { getCurrent, logout } from '../../store/actions'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { path } from '../../ultils/constant'
+import { Outlet } from 'react-router-dom'
 
 const EditAccount = () => {
     const { currentData } = useSelector(state => state.user)
@@ -90,6 +91,9 @@ const EditAccount = () => {
                         textColor='text-white'
                         onClick={handleSubmit}
                     />
+                    <div className='flex-auto h-full py-4 overflow-y-scroll'>
+                                    <Outlet />
+                                </div>
                 </div>
             </div>
         </div>

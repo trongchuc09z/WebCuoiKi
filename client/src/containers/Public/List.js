@@ -15,21 +15,28 @@ const List = ({ categoryCode }) => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        // Bước 1: Lấy tất cả params từ URL
         let params = []
         for (let entry of searchParams.entries()) {
-            params.push(entry);
+            params.push(entry);// [['page', '1'], ['priceCode', 'P01'], ...]
         }
+
+        // Bước 2: Chuyển thành object
         let searchParamsObject = {}
         params?.forEach(i => {
             if (Object.keys(searchParamsObject)?.some(item => item === i[0])) {
+                // Nếu key đã tồn tại → gộp thành mảng
                 searchParamsObject[i[0]] = [...searchParamsObject[i[0]], i[1]]
             } else {
+                // Key mới → thêm vào object
                 searchParamsObject = { ...searchParamsObject, [i[0]]: [i[1]] }
             }
         })
+        // Bước 3: Thêm các filter từ props và state
         if (categoryCode) searchParamsObject.categoryCode = categoryCode
         if (sort === 1) searchParamsObject.order = ['createdAt', 'DESC']
         if (sort === 0) searchParamsObject.order = ['title', 'DESC']
+        // Bước 4: Gọi API
         dispatch(getPostsLimit(searchParamsObject))
     }, [searchParams, categoryCode, sort, update])
 
