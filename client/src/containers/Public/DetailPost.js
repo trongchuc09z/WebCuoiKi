@@ -122,7 +122,6 @@ const DetailPost = () => {
     })()
   }
 />
-// 3D Model Viewer Section
 <div className='mt-8'>
     <h3 className='font-semibold text-xl my-4'>Mô phỏng phòng 3D</h3>
 
@@ -134,7 +133,6 @@ const DetailPost = () => {
     </p>
 </div>
 
-// ...existing code...
         <div className="bg-white rounded-md shadow-md p-4">
           <div className="flex flex-col gap-2">
             <h2 className="text-xl font-bold text-red-600 flex flex-col gap-2">
